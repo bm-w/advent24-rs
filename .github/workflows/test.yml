@@ -1,0 +1,36 @@
+name: Run tests
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check-out repository
+        uses: actions/checkout@v4
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/aoc
+          aws-region: us-east-1
+      - name: Copy input files from S3
+        run: |
+          for DAY_RS in $(ls -1 src/day*.rs); do
+            DAY_RS=${DAY_RS#src/}
+            DAY_TXT="${DAY_RS%.rs}.txt"
+            aws s3 cp s3://bm-w-aoc/year24/$DAY_TXT src/$DAY_TXT
+          done
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: stable
+      - name: Run Cargo tests
+        run: cargo test --release
