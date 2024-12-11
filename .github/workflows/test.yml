@@ -26,7 +26,7 @@ jobs:
           for DAY_RS in $(ls -1 src/day*.rs); do
             DAY_RS=${DAY_RS#src/}
             DAY_TXT="${DAY_RS%.rs}.txt"
-            aws s3 cp s3://bm-w-aoc/year24/$DAY_TXT src/$DAY_TXT
+            aws s3 cp s3://bm-w-aoc/year24/$DAY_TXT src/$DAY_TXT &
           done
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@master
