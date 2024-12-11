@@ -7,3 +7,14 @@ macro_rules! mod_days {
 	}
 }
 pub(crate) use mod_days;
+
+
+pub(crate) fn ulog10(mut val: u64) -> u64 {
+	assert_ne!(val, 0, "expected non-zero");
+	let mut res = 0;
+	while val >= 10 {
+		val /= 10;
+		res += 1;
+	}
+	res
+}
