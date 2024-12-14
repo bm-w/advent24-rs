@@ -3,8 +3,13 @@ name = "advent24"
 version = "0.0.0"
 edition = "2021"
 
+[features]
+day14-cli = ["dep:crossterm"]
+
 [dependencies]
+crossterm = { version = "0.28.1", optional = true }
 itertools = "0.13.0"
+num-integer = "0.1.46"
 paste = "1.0.15"
 
 [dev-dependencies]
