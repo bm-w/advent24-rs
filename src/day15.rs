@@ -341,7 +341,7 @@ mod parsing {
 			let mut robot_pos = None;
 			for (l, line) in s.lines().enumerate() {
 				let line_len = line.len();
-				if *stride.insert(line_len) != line_len {
+				if stride.replace(line_len).is_some_and(|l| l != line_len) {
 					return Err(Self::Err::Stride { line: l })
 				}
 
