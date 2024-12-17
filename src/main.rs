@@ -1,7 +1,8 @@
 // Copyright (c) 2024 Bastiaan Marinus van de Weerd
 
 mod util;
-util::mod_days![01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16];
+util::mod_days![01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12,
+	13, 14, 15, 16, 17];
 
 fn main() -> std::io::Result<()> {
 	#[cfg(feature = "day14-cli")]
@@ -28,6 +29,7 @@ fn main() -> std::io::Result<()> {
 	println!("Day 14; part 1: {}, part 2: {}", day14::part1(), day14::part2());
 	println!("Day 15; part 1: {}, part 2: {}", day15::part1(), day15::part2());
 	println!("Day 16; part 1: {}, part 2: {}", day16::part1(), day16::part2());
+	println!("Day 17; part 1: {}, part 2: {}", day17::part1(), day17::part2());
 
 	Ok(())
 }
