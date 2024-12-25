@@ -2,7 +2,7 @@
 
 mod util;
 util::mod_days![01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12,
-	13, 14, 15, 16, 17, 18, 19, 20, 21];
+	13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 
 fn main() -> std::io::Result<()> {
 	#[cfg(feature = "day14-cli")]
@@ -34,6 +34,7 @@ fn main() -> std::io::Result<()> {
 	println!("Day 19; part 1: {}, part 2: {}", day19::part1(), day19::part2());
 	println!("Day 20; part 1: {}, part 2: {}", day20::part1(), day20::part2());
 	println!("Day 21; part 1: {}, part 2: {}", day21::part1(), day21::part2());
+	println!("Day 22; part 1: {}, part 2: {}", day22::part1(), day22::part2());
 
 	Ok(())
 }
