@@ -16,13 +16,11 @@ enum Dir { North, East, South, West }
 
 impl Dir {
 	fn is_opposite(&self, other: Dir) -> bool {
-		match (self, other) {
+		matches!((self, other),
 			| (Self::North, Self::South)
 			| (Self::East, Self::West)
 			| (Self::South, Self::North)
-			| (Self::West, Self::East) => true,
-			_ => false,
-		}
+			| (Self::West, Self::East))
 	}
 }
 
@@ -145,7 +143,7 @@ mod path {
 				}
 			}
 
-			return None
+			None
 		}
 	}
 }
@@ -155,7 +153,7 @@ mod path {
 mod display {
 	pub(super) struct DisplayMaze<'a, F>(pub(super) &'a super::Maze, pub(super) F);
 
-	impl<'a, F> std::fmt::Display for DisplayMaze<'a, F>
+	impl<F> std::fmt::Display for DisplayMaze<'_, F>
 	where F: Fn(usize) -> Option<char> {
 		fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
 			use std::fmt::Write as _;

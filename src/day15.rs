@@ -253,7 +253,7 @@ impl std::fmt::Display for DisplayWideWarehouse<'_> {
 					Space::Open { .. } => {
 						if pos == self.robot_pos {
 							f.write_char('@')?;
-						} else if let Some(_) = self.map._find_box(pos) {
+						} else if self.map._find_box(pos).is_some() {
 							f.write_str("[]")?;
 							x += 1;
 						} else {

@@ -81,11 +81,9 @@ fn dynamic<const N: usize>(input_stones: Vec<Stone>) -> usize {
 		res
 	}
 
-	let count = input_stones.into_iter()
+	input_stones.into_iter()
 		.map(|s| stones(s, N, &mut cache))
-		.sum();
-
-	count
+		.sum()
 }
 
 

@@ -48,12 +48,12 @@ fn part1_impl(input_map: Map) -> u64 {
 			let Some(prev) = prev else { return Self { idx: None, rem_blocks: map.last_blocks } };
 
 			debug_assert_eq!(prev.rem_blocks, 0);
-			let idx = prev.idx.unwrap_or_else(|| map.entries.len()) - 1;
+			let idx = prev.idx.unwrap_or(map.entries.len()) - 1;
 			Self { idx: Some(idx), rem_blocks: map.entries[idx].blocks }
 		}
 
 		fn id(end: Option<usize>, map: &Map) -> u64 {
-			end.unwrap_or_else(|| map.entries.len()) as u64
+			end.unwrap_or(map.entries.len()) as u64
 		}
 	}
 
@@ -117,7 +117,7 @@ fn part2_impl(input_map: Map) -> u64 {
 		fn new(prev: Option<&Self>, map: &Map) -> Self {
 			let Some(prev) = prev else { return Self { idx: None } };
 
-			let idx = prev.idx.unwrap_or_else(|| map.entries.len()) - 1;
+			let idx = prev.idx.unwrap_or(map.entries.len()) - 1;
 			Self { idx: Some(idx) }
 		}
 	}

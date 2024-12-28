@@ -300,6 +300,7 @@ mod parsing {
 	#[derive(Debug)]
 	pub(super) enum Error { Format, Towels(TowelsError) }
 
+	#[allow(clippy::type_complexity)]
 	pub(super) fn try_towels_and_patterns(s: &str) -> Result<(
 		Box<[Towel<'_>]>,
 		impl Iterator<Item = Result<Pattern<'_>, PatternsError>>,

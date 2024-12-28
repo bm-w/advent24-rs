@@ -88,26 +88,10 @@ fn part1and2_impl<const DIST: usize, const SAVE: usize>(input_racetrack: Racetra
 	}
 	assert_eq!(pos, input_racetrack.end);
 
-	// dbg!(input_racetrack.start);
-	// dbg!(input_racetrack.end - 2);
-	// dbg!(&cheats);
-	// dbg!(dists[input_racetrack.start]);
-	// dbg!(dists[input_racetrack.end - 2]);
-	// dbg!(dists[input_racetrack.end - 2] - dists[input_racetrack.start]);
-
-	// let mut dbg_saves = [0; 500];
-
-	let count = cheats.into_iter()
+	cheats.into_iter()
 		.map(|(from, to, dist)| dists[to] - dists[from] - dist)
 		.filter(|&s| s >= SAVE)
-		// .inspect(|&s| dbg_saves[s] += 1)
-		.count();
-
-	// for (s, &c) in dbg_saves.iter().enumerate() {
-	// 	if s > SAVE && c > 0 { eprintln!("{}: {}", c, s) }
-	// }
-
-	count
+		.count()
 }
 
 

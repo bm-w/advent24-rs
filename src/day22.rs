@@ -71,7 +71,7 @@ fn part2_impl(input_secret_numbers: impl Iterator<Item = u64>) -> usize {
 			changes &= 0b11111_11111_11111_11111;
 			changes |= (9 + curr - prev) as usize;
 
-			if i >= 3 && !std::mem::replace(&mut seen[changes as usize], true) {
+			if i >= 3 && !std::mem::replace(&mut seen[changes], true) {
 				total_counts[changes] += curr;
 			}
 

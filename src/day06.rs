@@ -61,21 +61,21 @@ impl Lab {
 	) -> Option<(&'a Guard, bool)> {
 		let Some(Guard { pos: guard_pos, dir: guard_dir }) = guard else { return None };
 
-		match Self::_next_pos(&spaces, stride, *guard_pos, *guard_dir) {
+		match Self::_next_pos(spaces, stride, *guard_pos, *guard_dir) {
 			Some(next_pos)
-				if matches!(&spaces[next_pos], Space::Open)
-				&& !added_obstr.as_ref().is_some_and(|&p| next_pos == p)
+				if matches!(spaces[next_pos], Space::Open)
+				&& added_obstr.as_ref().is_none_or(|&p| next_pos != p)
 			=> {
 				*guard_pos = next_pos;
-				return guard.as_ref().map(|g| (g, false))
+				guard.as_ref().map(|g| (g, false))
 			}
 			Some(_) => {
 				guard_dir.cycle();
-				return guard.as_ref().map(|g| (g, true))
+				guard.as_ref().map(|g| (g, true))
 			}
 			None => {
 				*guard = None;
-				return None;
+				None
 			}
 		}
 	}

@@ -187,8 +187,8 @@ mod parsing {
 
 	fn try_coord(s: &str) -> Result<[usize; 2], PosError> {
 		let (x, y) = s.split_once(',').ok_or(PosError::Format)?;
-		let x = x.parse().map_err(|e| PosError::X(e))?;
-		let y = y.parse().map_err(|e| PosError::Y(e))?;
+		let x = x.parse().map_err(PosError::X)?;
+		let y = y.parse().map_err(PosError::Y)?;
 		Ok([x, y])
 	}
 
