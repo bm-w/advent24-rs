@@ -61,7 +61,7 @@ fn part2_impl((input_ord_rules, input_updates): inputs_t!()) -> u64 {
 		.map(|update| {
 			use std::collections::{HashMap, VecDeque};
 
-			// Kahn’s algorithm
+			// Kahn’s algorithm for topological sorting
 
 			// First, compute the ‘degrees’ of right pages: count the numbers
 			// of rules that require that a page be ordered after other pages.
